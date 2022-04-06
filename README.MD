@@ -7,6 +7,11 @@ bash (linux, Git bash or equivilent)
 To set up database:
 $ bash import-script.sh
 
+This should result in the following output:
+
+![import](/food_import.png)
+
+
 Afterwards database can be accessed with:
 $ docker exec -it hbase-master hbase shell
 
@@ -15,6 +20,8 @@ To see info about 'Beer or ale' the following queries can be used:
 hbase> get 'foods', '93101000', 'info', 'nutrition'
 
 hbase> scan 'foods', { FILTER => SingleColumnValueFilter.new(Bytes.toBytes('info'), Bytes.toBytes('Display_Name'), CompareFilter::CompareOp.valueOf('EQUAL'),BinaryComparator.new(Bytes.toBytes('Beer or ale')))}
+
+![food](/scan_food.png)
 
 
 _______
